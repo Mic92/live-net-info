@@ -4,6 +4,10 @@ buildGoModule rec {
   src = ./.;
   vendorSha256 = "sha256-2bZUAqACI9TdaGUWXYs0kBoLXhiv/WjCqsHm25U3v1g=";
 
+  shellHook = ''
+    unset GOFLAGS
+  '';
+
   meta = with lib; {
     description = "Shows network information in real time";
     homepage = "https://github.com/Mic92/live-net-info";

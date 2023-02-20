@@ -61,7 +61,7 @@ func runPing(address net.IP, delay time.Duration) tea.Cmd {
 		re := regexp.MustCompile(`(?m:^rtt min/avg/max/mdev = ([0-9.]+)/([0-9.]+)/([0-9.]+)/([0-9.]+) ms$)`)
 		match := re.FindSubmatch(stdout.Bytes())
 		if match == nil {
-			return pingError(address, fmt.Errorf("unable to parse ping output: %s", stdout))
+			return pingError(address, fmt.Errorf("unable to parse ping output: %s", stdout.String()))
 		}
 		avgRtt, err := strconv.ParseFloat(string(match[2]), 64)
 		if err != nil {
